@@ -1,0 +1,24 @@
+server:
+  port: 8094
+
+spring:
+  application:
+    name: msvc-disponibilidad
+  datasource:
+    url: jdbc:mysql://localhost:3306/ms-disponibilidad
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+
+
+  eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

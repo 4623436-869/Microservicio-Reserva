@@ -1,0 +1,39 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: auth
+          uri: 'http://localhost:8090'
+          predicates:
+            - Path=/auth/**
+        - id: recursos
+          uri: 'http://localhost:8092'
+          predicates:
+            - Path=/api/recursos/**
+
+            - id: reservas
+          uri: 'http://localhost:8091'
+          predicates:
+            - Path=/api/reservas/**
+
+            - id: notificaciones
+          uri: 'http://localhost:8093'
+          predicates:
+            - Path=/api/notificaciones/**
+
+            - id: disponibilidades
+          uri: 'http://localhost:8094'
+          predicates:
+            - Path=/api/disponibilidades/**
+        
+eureka:
+  client:
+    register-with-eureka: false
